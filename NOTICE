@@ -1,0 +1,20 @@
+Cooling Topology
+Copyright 2026 Summon Software Labs.
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Cooling Topology is part of Data Center Control Plane (DCCP), Tranche 3: Cooling
+Infrastructure Control. It is repository 26 of the DCCP program and owns the
+generation-bound structural model of data-centre cooling connectivity.
+
+Third-party notices
+-------------------
+
+This product includes no third-party source code and links no third-party
+libraries. It is implemented against the C++20 standard library and the
+operating-system interfaces it needs for durable atomic file replacement,
+advisory file locking and non-interactive process termination in tests.
+
+The canonical serialization format, the integrity digest (SHA-256, FIPS 180-4)
+and every identity, generation, epoch and incarnation type are implemented in
+this repository.

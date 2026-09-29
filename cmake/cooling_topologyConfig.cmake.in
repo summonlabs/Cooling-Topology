@@ -1,0 +1,25 @@
+@PACKAGE_INIT@
+
+# Cooling Topology - DCCP Tranche 3 (Cooling Infrastructure Control).
+#
+# Exported target:
+#   dccp::cooling_topology       C++20 library
+#
+# Example:
+#   find_package(cooling_topology 1.0 REQUIRED)
+#   target_link_libraries(app PRIVATE dccp::cooling_topology)
+
+include(CMakeFindDependencyMacro)
+
+include("${CMAKE_CURRENT_LIST_DIR}/cooling_topologyTargets.cmake")
+
+set(COOLING_TOPOLOGY_LIBRARIES dccp::cooling_topology)
+set(COOLING_TOPOLOGY_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_INCLUDEDIR@")
+
+if(NOT TARGET dccp::cooling_topology)
+  set(cooling_topology_FOUND FALSE)
+  set(cooling_topology_NOT_FOUND_MESSAGE "the cooling_topology export set did not provide dccp::cooling_topology")
+  return()
+endif()
+
+check_required_components(cooling_topology)
