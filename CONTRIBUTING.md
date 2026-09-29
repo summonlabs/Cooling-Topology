@@ -65,6 +65,11 @@ cmake --build build --config Release
 ctest --test-dir build -C Release --output-on-failure
 ```
 
+A multi-config generator such as Visual Studio writes the binaries to a
+per-configuration subdirectory, so the test suite is at
+`build/Release/cooling_topology_tests.exe`; a single-config generator such as
+Ninja or Makefiles writes it directly to `build/`.
+
 Requirements: CMake 3.20 or newer and a C++20 compiler (MSVC 19.30+, GCC 11+ or
 Clang 14+).
 
@@ -80,8 +85,9 @@ The test suite is a single executable that runs every proof obligation to
 completion and reports its own findings:
 
 ```sh
-./build/cooling_topology_tests
-./build/cooling_topology_tests --filter=store --seed=12345
+./build/Release/cooling_topology_tests                 # Visual Studio generator
+./build/cooling_topology_tests                         # Ninja or Makefiles
+./build/Release/cooling_topology_tests --filter=store --seed=12345
 ```
 
 Property and randomized cases derive their seed from the run seed and the case
@@ -109,7 +115,8 @@ diagnose and repair.
 
 ## Before opening a pull request
 
-1. `cmake --build build` is warning-free with warnings-as-errors enabled.
+1. `cmake --build build --config Release` is warning-free with
+   warnings-as-errors enabled.
 2. The full test suite passes, including the new obligations your change adds.
 3. Examples and the `ctopctl` CLI still build and run.
 4. `cmake --install` plus an out-of-tree `find_package(cooling_topology)`

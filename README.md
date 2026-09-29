@@ -478,12 +478,18 @@ error.
 
 ## Examples and benchmark
 
+A multi-config generator such as Visual Studio writes the binaries to a
+per-configuration subdirectory; Ninja and Makefiles write them directly to
+`build/`. For the Release configuration of the Visual Studio generator:
+
 ```sh
-./build/examples/cooling_topology_example_plant_redundancy
-./build/examples/cooling_topology_example_primary_secondary_circuit
-./build/examples/cooling_topology_example_stale_update
-./build/examples/cooling_topology_example_durable_store
-./build/benchmarks/cooling_topology_benchmarks [scale]
+./build/Release/cooling_topology_example_plant_redundancy
+./build/Release/cooling_topology_example_primary_secondary_circuit
+./build/Release/cooling_topology_example_stale_update
+./build/Release/cooling_topology_example_durable_store
+./build/Release/cooling_topology_benchmarks [scale]
+./build/Release/cooling_topology_tests
+./build/Release/ctopctl version
 ```
 
 The benchmark measures completed useful operations (generation build, canonical
